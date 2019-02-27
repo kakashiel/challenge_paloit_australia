@@ -33,7 +33,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
-// this is our get method
 // this method fetches all available data in our database
 router.get("/getData", (req, res) => {
     Data.find((err, data) => {
@@ -42,6 +41,31 @@ router.get("/getData", (req, res) => {
     });
 });
 
+function numberOfConsecutiveZero(num){
+    var res = 0;
+    var tmp = 0;
+    for(var i = 0; i < num.length ; i++){
+        if (num.charAt(i) == 0){
+            tmp++;
+        }
+        else{
+            if (tmp > res){
+                res = tmp;
+            }
+            tmp = 0;
+        }
+    }
+    return res > tmp ? res : tmp;
+}
+function sumOfWord(name){
+    var sum = 0;
+    for (var i = 0; i < name.length; i++){
+        console.log(name.charAt(i));
+        sum += name.charCodeAt(i);
+    }
+    console.log(sum.toString(2));
+    return sum.toString(2);
+}
 
 // this is our create methid
 // this method adds new data in our database
@@ -49,7 +73,7 @@ router.post("/putData", (req, res) => {
     let data = new Data();
 
     const { id, name } = req.body;
-
+    const resultat = numberOfConsecutiveZero(sumOfWord(name));
     if ((!id && id !== 0) || !name) {
         return res.json({
             success: false,
@@ -58,6 +82,7 @@ router.post("/putData", (req, res) => {
     }
     data.name = name;
     data.id = id;
+    data.res = resultat;
     data.save(err => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });

@@ -7,10 +7,8 @@ class App extends Component {
         data: [],
         id: 0,
         name: '',
+        res: 0,
         intervalIsSet: false,
-        idToDelete: null,
-        idToUpdate: null,
-        objectToUpdate: null
     };
 
     componentDidMount() {
@@ -55,10 +53,10 @@ class App extends Component {
                     {data.length <= 0
                         ? "NO DB ENTRIES YET"
                         : data.map(dat => (
-                            <li style={{ padding: "10px" }} key={data.name}>
+                            <li style={{ padding: "10px" }} key={dat.id}>
                                 <span style={{ color: "gray" }}> id: </span> {dat.id} <br />
-                                <span style={{ color: "gray" }}> name: </span>
-                                {dat.name}
+                                <span style={{ color: "gray" }}> name: </span> {dat.name} <br />
+                                <span style={{ color: "gray" }}> res: </span> {dat.res}
                             </li>
                         ))}
                 </ul>
@@ -66,14 +64,6 @@ class App extends Component {
                     <input type="text" value={this.state.name} onChange={e => this.setState({name: e.target.value})}/>
                     <button onClick={() => this.putDataToDB(this.state.name)} >add</button>
                 </div>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
             </div>
         );
     }
