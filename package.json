@@ -1,0 +1,23 @@
+{
+  "name": "challenge_paloit_australia",
+  "version": "1.0.0",
+  "description": "Build an mini-app in react &amp; node",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kakashiel/challenge_paloit_australia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kakashiel/challenge_paloit_australia/issues"
+  },
+  "homepage": "https://github.com/kakashiel/challenge_paloit_australia#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}

@@ -62,3 +62,4 @@ typings/
 
 #Intellij
 .idea
+.iml
